@@ -1,4 +1,10 @@
+@font-face {
+    font-family: "FreeMonoSpace";
+    src: url(fonts/FreeMonospaced-7ZXP.ttf) format("truetype");
+}
 :root{
+    --bg-color:teal;
+    --main-color:rgb(13, 163, 163);
     --main-txt-color: rgb(241, 233, 233);
     --txt2-color: rgb(223, 37, 161);
 }
@@ -8,11 +14,15 @@
     margin: 0;
 }
 body{
-    background-color: teal;
+    background-color: var(--bg-color);
+    font-family: 'FreeMonoSpace';
 }
 a{
     text-decoration-line: none;
     color:initial;
+}
+ul{
+    list-style: none;
 }
 
 /* section header */
@@ -23,7 +33,7 @@ a{
     }
     header h1{
         text-align: center;
-        font-size: 5em;
+        font-size: 7em;
         color: var(--main-txt-color);
     }
 
@@ -35,7 +45,6 @@ a{
     }
     menu ul{
         padding: 2% 10%;
-        list-style: none;
     }
     menu li{
         margin: 5% 0;
@@ -46,13 +55,14 @@ a{
         color: var(--main-txt-color);
         font-weight: bold;
         font-size: 1.5em;
+        cursor: pointer;
     }
     menu li:hover{
-        border: 1px solid rgb(13, 163, 163);
+        border: 1px solid var(--main-color);
         animation-name: firstAnimation;
         animation-duration: 1s; 
         background-color:white;
-        color:rgb(13, 163, 163);
+        color:var(--main-color);
     }
 
 /* section main */
@@ -60,11 +70,11 @@ a{
         margin: 0 5%;
         float: left;
         width: 50%;
-        padding: 5% 5%;
+        padding: 1% 5%;
     }
     main div.mainHeadQuad{
         color: var(--main-txt-color);
-        background-color: rgb(13, 163, 163);
+        background-color: var(--main-color);
         border-radius: 0 0 30% 0;
         padding: 5%;
         opacity: 0.9;
@@ -72,32 +82,73 @@ a{
     main div.mainHeadQuad h1{
         font-size: 4em;
     }
+    main a{
+        color:inherit;
+    }
     main div.mainHeadQuad h2.mainLookProducts{
-        margin: 2% 20% 0 20%;
+        margin: 4% 20% 0 20%;
         padding: 2% 0;
         text-align: center;
         border: 1px solid var(--main-txt-color);
         color: var(--main-txt-color);
     }
     main div.mainHeadQuad h2.mainLookProducts:hover{
-        margin: 2% 20% 0 20%;
+        margin: 4% 20% 0 20%;
         padding: 2% 0;
         text-align: center;
-        border: 1px solid rgb(13, 163, 163);
+        border: 1px solid var(--main-color);
         animation-name: firstAnimation;
         animation-duration: 2s; 
         background-color:white;
-        color:rgb(13, 163, 163);
+        color:var(--main-color);
     }
+
+    /* section main - Sing In */
+    main div.mainHeadQuad h1.singInH1{
+        font-size: 2em;
+    }
+    table.singInTable{
+        margin: 3% 10%;
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    table.singInTable input{
+        background-color: var(--bg-color);
+        height:2em;
+        color: var(--main-txt-color);
+        font-weight: bold;
+        border: 1px solid var(--main-txt-color);
+    }
+    button.singInSubmit{
+        margin: 4% 0;
+        width: 100%;
+        background-color: var(--main-color);
+        border: 1px solid var(--main-txt-color);
+        font-size: 0.8em;
+        height: 1.5em;
+        color: var(--main-txt-color);
+        cursor: pointer;
+        
+    }
+    button.singInSubmit:hover{
+        border: 1px solid var(--main-color);
+        animation-name: firstAnimation;
+        animation-duration: 1s; 
+        background-color:white;
+        color:var(--main-color);
+    }
+
+
+
     @keyframes firstAnimation {
         0% {
             left: 0;
-            background-color:rgb(13, 163, 163);
+            background-color:var(--main-color);
 
         }
         100%{
             left: 100%;
             background-color:white;
-            color:rgb(13, 163, 163);
+            color:var(--main-color);
         }
     }

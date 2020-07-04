@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,15 +21,20 @@
     </header>
     <menu>
         <ul>
-            <li>Zaloguj się <i class="fas fa-sign-in-alt"></i></li>
-            <li>Zarejestruj się</li>
+            <li class='singIn'>Zaloguj się <i class="fas fa-sign-in-alt"></i></li>
+            <li class='singOut'>Zarejestruj się</li>
         </ul>
     </menu>
     <main>
         <div class='mainHeadQuad'>
             <h1>Witaj w sklepie</h1>
             <h2>Mamy nadzieje ze spodobaja Ci sie nasze produkty</h2>
-            <a href='#'><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>
+            <h2 class='mainLookProducts'><a href='#'>Zobacz nasze produkty</a></h2>
+            <?php
+                if(!isset($_SESSION['existTryAndFail'])){
+                    echo '<div id="existTryAndFail"></div>';
+                }
+            ?>
         </div>
     </main>
 </body>
