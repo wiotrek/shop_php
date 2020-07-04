@@ -1,0 +1,103 @@
+:root{
+    --main-txt-color: rgb(241, 233, 233);
+    --txt2-color: rgb(223, 37, 161);
+}
+
+*{
+    padding:0;
+    margin: 0;
+}
+body{
+    background-color: teal;
+}
+a{
+    text-decoration-line: none;
+    color:initial;
+}
+
+/* section header */
+    header{
+        width: 100%;
+        float: left;
+        margin-bottom: 5%;
+    }
+    header h1{
+        text-align: center;
+        font-size: 5em;
+        color: var(--main-txt-color);
+    }
+
+/* section menu */
+    menu{
+        width: 20%;
+        float: left;
+        border-radius: 10% 0 10% 0;
+    }
+    menu ul{
+        padding: 2% 10%;
+        list-style: none;
+    }
+    menu li{
+        margin: 5% 0;
+        padding: 2% 0;
+        width: 100%;
+        text-align: center;
+        border: 1px solid var(--main-txt-color);
+        color: var(--main-txt-color);
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    menu li:hover{
+        border: 1px solid rgb(13, 163, 163);
+        animation-name: firstAnimation;
+        animation-duration: 1s; 
+        background-color:white;
+        color:rgb(13, 163, 163);
+    }
+
+/* section main */
+    main{
+        margin: 0 5%;
+        float: left;
+        width: 50%;
+        padding: 5% 5%;
+    }
+    main div.mainHeadQuad{
+        color: var(--main-txt-color);
+        background-color: rgb(13, 163, 163);
+        border-radius: 0 0 30% 0;
+        padding: 5%;
+        opacity: 0.9;
+    }
+    main div.mainHeadQuad h1{
+        font-size: 4em;
+    }
+    main div.mainHeadQuad h2.mainLookProducts{
+        margin: 2% 20% 0 20%;
+        padding: 2% 0;
+        text-align: center;
+        border: 1px solid var(--main-txt-color);
+        color: var(--main-txt-color);
+    }
+    main div.mainHeadQuad h2.mainLookProducts:hover{
+        margin: 2% 20% 0 20%;
+        padding: 2% 0;
+        text-align: center;
+        border: 1px solid rgb(13, 163, 163);
+        animation-name: firstAnimation;
+        animation-duration: 2s; 
+        background-color:white;
+        color:rgb(13, 163, 163);
+    }
+    @keyframes firstAnimation {
+        0% {
+            left: 0;
+            background-color:rgb(13, 163, 163);
+
+        }
+        100%{
+            left: 100%;
+            background-color:white;
+            color:rgb(13, 163, 163);
+        }
+    }
