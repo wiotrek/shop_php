@@ -78,10 +78,11 @@ ul{
     }
     main div.mainHeadQuad{
         color: var(--main-txt-color);
+        width: 100%;
+        float: left;
         background-color: var(--main-color);
-        border-radius: 0 0 30% 0;
+        border-radius: 0 0 25px 0;
         padding: 5%;
-        opacity: 0.9;
     }
     main div.mainHeadQuad h1{
         font-size: 4em;
@@ -107,6 +108,40 @@ ul{
         animation-duration: 2s; 
         background-color:white;
         color:var(--main-color);
+    }
+
+/* section main products */
+    div.mainHeadQuad article{
+        width: 100%;
+        float: left;
+        text-align: center;
+        margin: 2% 0;
+        border: 2px solid var(--bg-color);
+        background-color: var(--bg-color);
+        border-radius: 0 0 15px 0;
+    }
+    div.mainHeadQuad article:hover{
+        border: 2px solid var(--main-txt-color);
+        border-radius: 30px;
+    }
+    div.mainHeadQuad article .picture{
+        width: 20%;
+        height: 20%;
+        float: left;
+        border: 2px solid var(--bg-color);
+        border-radius: 30px;
+    }
+    div.mainHeadQuad article .description h2{
+        text-align: center;
+        font-size: 2em;
+        float: left;
+        width: 78%;
+        margin: 1% 0%;
+    }
+    div.mainHeadQuad article .description table{
+        float: left;
+        margin: 2% 20%;
+        text-align: left;
     }
 
 /* section main - Sing In */
