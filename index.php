@@ -49,7 +49,7 @@
                     echo "<h1>Witaj w sklepie</h1>";
                 }
             ?>
-            <h2>Mamy nadzieje ze spodobaja Ci sie nasze produkty</h2>
+            <h2>Mamy nadzieje, że spodobają Ci się nasze produkty</h2>
             <h2 class='mainLookProducts'><a href='#'>Zobacz nasze produkty</a></h2>
             <?php
                 if(isset($_SESSION['existTryAndFail'])){
