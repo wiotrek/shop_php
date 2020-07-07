@@ -1,8 +1,6 @@
 $(document).ready(function () {
     let mainHead = true;
 
-    
-
     $('li.singIn').click(function () { 
         if(mainHead){
             $('.mainHeadQuad h1').hide();
@@ -35,8 +33,7 @@ $(document).ready(function () {
         }
     });
 
-    $('li.singOut').click(function (e) { 
-        e.preventDefault();
+    $('li.singOut').click(function () { 
         if(mainHead){
             $('.mainHeadQuad h1').hide();
             $('.mainHeadQuad h2').hide();
@@ -45,12 +42,12 @@ $(document).ready(function () {
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
             $('h1.singInH1').text("Zarejestruj się, jeśli nie masz jeszcze konta");
-            $('.mainHeadQuad').append('<form class="singInForm" action="singOut.php"><table class="singInTable"></form>');
+            $('.mainHeadQuad').append('<form class="singInForm" action="singout.php" method="post"><table class="singInTable"></form>');
 
             $('table.singInTable').append("<tr><td>Podaj swój email: </td><<td><input class='singOutEmail' type='text' name='singOutEmail'/></td></tr>");
             $('table.singInTable tr').after("<tr><td>Podaj swój login: </td><td><input class='singOutLogin' type='text' name='singOutLogin'/></td></tr>");
             $('table.singInTable tr').last().after("<tr><td>Podaj swoje imię: </td><td><input class='singOutName' type='text' name='singOutName'/></td></tr>");
-            $('table.singInTable tr').last().after("<tr><td>Podaj swoje nazwisko: </td><td><input class='singOutSurname' type='text' name='singOutSurname'/></td></tr>");
+            $('table.singInTable tr').last().after("<tr><td>Podaj swoje nazwisko: </td><td><input type='text' name='singOutSurname'/></td></tr>");
             $('table.singInTable tr').last().after("<tr><td>Podaj swoje hasło: </td><td><input class='singOutPassword' type='password' name='singOutPassword'/></td></tr>");
             $('table.singInTable tr').last().after("<tr><td>Powtórz hasło: </td><td><input class='singOutPassword' type='password'/></td></tr>");
             $('table.singInTable tr').last().after("<tr><td></td><td><button type='submit' class='singInSubmit'>Zarejestruj się</button></td></tr>");
@@ -74,7 +71,10 @@ $(document).ready(function () {
         }
     });
 
-    if ($('#existTryAndFail').length){
+    
+    
+    
+    if ($('.existTryAndFailSingIn').length){
         if(mainHead){
             $('.mainHeadQuad h1').hide();
             $('.mainHeadQuad h2').hide();
@@ -94,7 +94,6 @@ $(document).ready(function () {
 
             mainHead = false;
         }else{
-            $('#existTryAndFail').remove();
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
             const singInIcon = $('<i class="fas fa-sign-in-alt"></i>');
@@ -104,6 +103,46 @@ $(document).ready(function () {
             $('form.singInForm').detach();
             
             $('li.singOut').show();
+
+            mainHead = true;
+        }
+    }
+
+    if($('.existTryAndFailSingOut').length){
+        if(mainHead){
+            $('.mainHeadQuad h1').hide();
+            $('.mainHeadQuad h2').hide();
+            $('li.singIn').hide();
+            $('li.singOut').text('Powrót');
+
+            $('.mainHeadQuad').append('<h1 class="singInH1">');
+            $('h1.singInH1').text("Zarejestruj się, jeśli nie masz jeszcze konta");
+            $('.mainHeadQuad').append('<form class="singInForm" action="singout.php" method="post"><table class="singInTable"></form>');
+
+            $('table.singInTable').append("<tr><td>Podaj swój email: </td><<td><input class='singOutEmail' type='text' name='singOutEmail'/></td></tr>");
+            $('table.singInTable tr').after("<tr><td>Podaj swój login: </td><td><input class='singOutLogin' type='text' name='singOutLogin'/></td></tr>");
+            $('table.singInTable tr').last().after("<tr><td>Podaj swoje imię: </td><td><input class='singOutName' type='text' name='singOutName'/></td></tr>");
+            $('table.singInTable tr').last().after("<tr><td>Podaj swoje nazwisko: </td><td><input type='text' name='singOutSurname'/></td></tr>");
+            $('table.singInTable tr').last().after("<tr><td>Podaj swoje hasło: </td><td><input class='singOutPassword' type='password' name='singOutPassword'/></td></tr>");
+            $('table.singInTable tr').last().after("<tr><td>Powtórz hasło: </td><td><input class='singOutPassword' type='password'/></td></tr>");
+            $('table.singInTable tr').last().after("<tr><td></td><td><button type='submit' class='singInSubmit'>Zarejestruj się</button></td></tr>");
+            $('table.singInTable tr').last().after("<tr><td class='singInTableError' colspan='2'></td></tr>");
+
+            $('.singInTableError').text("Błąd Rejestracji");
+
+            mainHead = false;
+        }else{
+            $('.mainHeadQuad h1').show();
+            $('.mainHeadQuad h2').show();
+            $('li.singIn').show();
+
+            $('li.singOut').text("Powrót");
+
+            $('h1.singInH1').detach();
+            $('form.singInForm').detach();
+            
+            $('li.singIn').show();
+
 
             mainHead = true;
         }

@@ -51,14 +51,22 @@
             ?>
             <h2>Mamy nadzieje, że spodobają Ci się nasze produkty</h2>
             <h2 class='mainLookProducts'><a href='#'>Zobacz nasze produkty</a></h2>
-            <?php
+        </div>
+        <?php
                 if(isset($_SESSION['existTryAndFail'])){
-                    if($_SESSION['existTryAndFail']){
-                        echo '<div id="existTryAndFail"></div>';
+                    switch ( $_SESSION['existTryAndFail']) {
+                        case '0':
+                            echo "";
+                            break;
+                        case '1':
+                            echo '<div class="existTryAndFailSingIn"></div>';
+                            break;
+                        case '2':
+                            echo '<div class="existTryAndFailSingOut"></div>';
+                            break;
                     }
                 }
             ?>
-        </div>
     </main>
 </body>
 </html>
