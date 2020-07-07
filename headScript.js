@@ -12,7 +12,7 @@ $(document).ready(function () {
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
             $('h1.singInH1').text("Zaloguj się, abyś mógł robić zakupy");
-            $('.mainHeadQuad').append('<form method="post" class="singInForm" action="index.php"><table class="singInTable"></form>');
+            $('.mainHeadQuad').append('<form method="post" class="singInForm" action="singIn.php"><table class="singInTable"></form>');
 
             $('table.singInTable').append("<tr><td>Podaj swój login:</td><<td><input class='login' type='text' name='login'/></td></tr>");
             $('table.singInTable tr').after("<tr><td>Podaj swoje hasło:</td><td><input class='loginPassword' type='password' name='loginPassword'/></td></tr>");
@@ -83,15 +83,18 @@ $(document).ready(function () {
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
             $('h1.singInH1').text("Zaloguj się, abyś mógł robić zakupy");
-            $('.mainHeadQuad').append('<form method="post" class="singInForm" action="index.php"><table class="singInTable"></form>');
+            $('.mainHeadQuad').append('<form method="post" class="singInForm" action="singIn.php"><table class="singInTable"></form>');
 
             $('table.singInTable').append("<tr><td>Podaj swój login:</td><<td><input class='login' type='text' name='login'/></td></tr>");
             $('table.singInTable tr').after("<tr><td>Podaj swoje hasło:</td><td><input class='loginPassword' type='password' name='loginPassword'/></td></tr>");
             $('table.singInTable tr').last().after("<tr><td></td><td><button type='submit' class='singInSubmit'>Zaloguj się</button></td></tr>");
             $('table.singInTable tr').last().after("<tr><td class='singInTableError' colspan='2'></td></tr>");
 
+            $('.singInTableError').text("Błąd logowania");
+
             mainHead = false;
         }else{
+            $('#existTryAndFail').remove();
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
             const singInIcon = $('<i class="fas fa-sign-in-alt"></i>');

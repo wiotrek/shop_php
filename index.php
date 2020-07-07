@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if (isset($_GET['logout'])) {
+        $_SESSION['loggin'] = 0;
+        session_destroy();
+        header("Location: index.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,18 +27,35 @@
     </header>
     <menu>
         <ul>
-            <li class='singIn'>Zaloguj się <i class="fas fa-sign-in-alt"></i></li>
-            <li class='singOut'>Zarejestruj się</li>
+            <?php
+                if(isset($_SESSION['currentUserId'])){
+                    echo "<li><i class='fas fa-shopping-basket'></i></li>";
+                    echo "<li><a href='?logout'>Wyloguj sie</a></li>";
+                }else{
+                    echo "<li class='singIn'>Zaloguj się <i class='fas fa-sign-in-alt'></i></li>";
+                    echo "<li class='singOut'>Zarejestruj się</li>";
+                }
+            ?>
+            
         </ul>
     </menu>
     <main>
         <div class='mainHeadQuad'>
-            <h1>Witaj w sklepie</h1>
+            <?php
+                if(isset($_SESSION['currentUserId'])){
+                    $currentUserName = $_SESSION['currentUserName'];
+                    echo "<h1>Witaj, $currentUserName</h1>";
+                }else{
+                    echo "<h1>Witaj w sklepie</h1>";
+                }
+            ?>
             <h2>Mamy nadzieje ze spodobaja Ci sie nasze produkty</h2>
             <h2 class='mainLookProducts'><a href='#'>Zobacz nasze produkty</a></h2>
             <?php
-                if(!isset($_SESSION['existTryAndFail'])){
-                    echo '<div id="existTryAndFail"></div>';
+                if(isset($_SESSION['existTryAndFail'])){
+                    if($_SESSION['existTryAndFail']){
+                        echo '<div id="existTryAndFail"></div>';
+                    }
                 }
             ?>
         </div>

@@ -64,6 +64,9 @@ ul{
         background-color:white;
         color:var(--main-color);
     }
+    menu li a{
+        color:inherit;
+    }
 
 /* section main */
     main{
@@ -136,6 +139,10 @@ ul{
         animation-duration: 1s; 
         background-color:white;
         color:var(--main-color);
+    }
+    table td.singInTableError{
+        text-align: center;
+        color: red;
     }
 
 

@@ -10,7 +10,7 @@
             PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'UTF8'",
             PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION
         );
-        $dbh = new PDO("mysql:host=localhost;dbname=projekt3", "root", "", $options);
+        $dbh = new PDO("mysql:host=localhost;dbname=bazaProjekt3", "root", "", $options);
         
         
         $stmt = $dbh->prepare("SELECT * FROM klienci WHERE login= :login AND password= :pass LIMIT 1;");
@@ -21,7 +21,6 @@
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
 
-        //stmtFetch potrzebny jest do policzenia ilosci wynikow
         $stmtFetch = $stmt->fetchAll();
 
         if( count($stmtFetch) ){
@@ -30,10 +29,11 @@
             $_SESSION['currentUserSurname'] = $stmtFetch[0]['surname'];
             $_SESSION['currentUserName'] = $stmtFetch[0]['name'];
             
-            $_SESSION['existTryAndFail'] = null;
+            $_SESSION['existTryAndFail'] = 0;
+            unset($_SESSION['existTryAndFail']);
             header("Location: index.php");
         }else{
-            $_SESSION['existTryAndFail'] = true;
+            $_SESSION['existTryAndFail'] = 1;
             header("Location: index.php");
         }
         $stmt->closeCursor();
