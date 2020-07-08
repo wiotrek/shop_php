@@ -53,16 +53,26 @@
                     echo "<a href='?site='><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
                 }else{
 
-                    for ($i=0; $i < 6; $i++) { 
+                    for ($i=0; $i < 3; $i++) { 
                         echo "<article>";
                         echo "<img class='picture' src='assets/spodnie.jpeg' />";
                         echo "<div class='description'>";
                         echo "<h2>Spodnie</h2>";
                         echo "<table><tr><td>Kategoria: </td><td>Spodnie wyczynowe</td></tr>";
-                        echo "<tr><td>Jakość: </td><td>Dobrunia</td></tr>";
+                        echo "<tr><td>Rozmiar: </td><td>L</td></tr>";
+                        echo "<tr><td>Cena: </td><td>234,42 zł</td></tr>";
                         echo "</table>";
-                        echo "</div>";
-                        echo "</article>";
+                            if(isset($_SESSION['currentUserId'])){
+                                echo "<div class='descriptionFooter'>";
+                                echo "<button class='minuse'>-</button><input type='text' value='0' class='how'/><button class='pluse'>+</button><button class='addToBasket'>Dodaj</button>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</article>";
+                            }else{
+                                echo "</div>";
+                                echo "</article>";
+                            }
+                        
                     }
                     
 
