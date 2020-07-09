@@ -2,7 +2,6 @@
     session_start();
 
     if (isset($_GET['logout'])) {
-        $_SESSION['loggin'] = 0;
         session_destroy();
         header("Location: index.php");
     }
@@ -23,7 +22,7 @@
 
 <body>
     <header>
-        <h1>Sklep</h1>
+        <a href='index.php'><h1>Sklep</h1></a>
     </header>
     <menu>
         <ul>
@@ -36,29 +35,65 @@
                     echo "<li class='singOut'>Zarejestruj się</li>";
                 }
             ?>
-            
         </ul>
     </menu>
     <main>
         <div class='mainHeadQuad'>
             <?php
-                if(isset($_SESSION['currentUserId'])){
-                    $currentUserName = $_SESSION['currentUserName'];
-                    echo "<h1>Witaj, $currentUserName</h1>";
-                }else{
-                    echo "<h1>Witaj w sklepie</h1>";
-                }
-            ?>
-            <h2>Mamy nadzieje ze spodobaja Ci sie nasze produkty</h2>
-            <h2 class='mainLookProducts'><a href='#'>Zobacz nasze produkty</a></h2>
-            <?php
-                if(isset($_SESSION['existTryAndFail'])){
-                    if($_SESSION['existTryAndFail']){
-                        echo '<div id="existTryAndFail"></div>';
+                if(!isset($_GET['site']) ){
+
+                    // HOME SITE
+                    if(isset($_SESSION['currentUserId'])){
+                        $currentUserName = $_SESSION['currentUserName'];
+                        echo "<h1>Witaj, $currentUserName</h1>";
+                    }else{
+                        echo "<h1>Witaj w sklepie</h1>";
                     }
+                    echo "<h2>Mamy nadzieje, że spodobają Ci się nasze produkty</h2>";
+                    echo "<a href='?site='><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
+                }else{
+
+                    for ($i=0; $i < 3; $i++) { 
+                        echo "<article>";
+                        echo "<img class='picture' src='assets/spodnie.jpeg' />";
+                        echo "<div class='description'>";
+                        echo "<h2>Spodnie</h2>";
+                        echo "<table><tr><td>Kategoria: </td><td>Spodnie wyczynowe</td></tr>";
+                        echo "<tr><td>Rozmiar: </td><td>L</td></tr>";
+                        echo "<tr><td>Cena: </td><td>234,42 zł</td></tr>";
+                        echo "</table>";
+                            if(isset($_SESSION['currentUserId'])){
+                                echo "<div class='descriptionFooter'>";
+                                echo "<button class='minuse'>-</button><input type='text' value='0' class='how'/><button class='pluse'>+</button><button class='addToBasket'>Dodaj</button>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</article>";
+                            }else{
+                                echo "</div>";
+                                echo "</article>";
+                            }
+                        
+                    }
+                    
+
                 }
             ?>
         </div>
+        <?php
+                if(isset($_SESSION['existTryAndFail'])){
+                    switch ( $_SESSION['existTryAndFail']) {
+                        case '0':
+                            echo "";
+                            break;
+                        case '1':
+                            echo '<div class="existTryAndFailSingIn"></div>';
+                            break;
+                        case '2':
+                            echo '<div class="existTryAndFailSingOut"></div>';
+                            break;
+                    }
+                }
+            ?>
     </main>
 </body>
 </html>

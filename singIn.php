@@ -16,6 +16,8 @@
         $stmt = $dbh->prepare("SELECT * FROM klienci WHERE login= :login AND password= :pass LIMIT 1;");
 
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $salt = 'dsanio$(*)!?lPDS32432SDMkl#!';
+        $pass = hash("sha512", $salt.$pass);
         $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
