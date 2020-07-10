@@ -15,15 +15,6 @@
         
         $countResults = $stmt->rowCount();
         $row = $stmt->fetchAll();
-        // $i = 0;
-        // while($row = $stmt->fetch()){
-        //     $i++;
-        //     $number = $row['name_product'];
-        //     $numberId = $i.$number;
-        //     echo $numberId;
-        // }
-
-
         $stmt->closeCursor();
 
         $dbh = null;

@@ -7,6 +7,7 @@
         session_destroy();
         header("Location: index.php");
     }
+    $siteNumber = 0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +53,7 @@
                         echo "<h1>Witaj w sklepie</h1>";
                     }
                     echo "<h2>Mamy nadzieje, że spodobają Ci się nasze produkty</h2>";
-                    echo "<a href='?site='><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
+                    echo "<a href='?site=$siteNumber'><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
                 }else{
                     if($countResults){
                         for ($i=0; $i < $countResults; $i++) { 
@@ -74,8 +75,12 @@
                                     echo "</div>";
                                     echo "</article>";
                                 }
-                            
                         }
+                        $getSide = $_GET['site'];
+                        echo "<a href='?site=".($getSide+1)."'>Następna Strona</a>";
+
+                            
+                    
                     }else{
                         echo "<article><h2>Niestety aktualnie brak towaru</h2></article>";
                     }
