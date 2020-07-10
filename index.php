@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt3s</title>
+    <title>Projekt3</title>
     <script src="https://kit.fontawesome.com/03d927952c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="theme.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>

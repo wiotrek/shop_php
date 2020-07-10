@@ -5,6 +5,7 @@ $(document).ready(function () {
         if(mainHead){
             $('.mainHeadQuad h1').hide();
             $('.mainHeadQuad h2').hide();
+            $('div.mainHeadQuad article').hide();
             $('li.singOut').hide();
             $(this).text('Powrót');
 
@@ -21,6 +22,7 @@ $(document).ready(function () {
         }else{
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
+            $('div.mainHeadQuad article').show();
             const singInIcon = $('<i class="fas fa-sign-in-alt"></i>');
             $(this).text("Zaloguj się ").append(singInIcon);
 
@@ -37,6 +39,7 @@ $(document).ready(function () {
         if(mainHead){
             $('.mainHeadQuad h1').hide();
             $('.mainHeadQuad h2').hide();
+            $('div.mainHeadQuad article').hide();
             $('li.singIn').hide();
             $(this).text('Powrót');
 
@@ -57,6 +60,7 @@ $(document).ready(function () {
         }else{
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
+            $('div.mainHeadQuad article').show();
             $('li.singIn').show();
 
             $(this).text("Zarejestruj się");
@@ -79,6 +83,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h1').hide();
             $('.mainHeadQuad h2').hide();
             $('li.singOut').hide();
+            $('div.mainHeadQuad article').hide();
             $('li.singIn').text('Powrót');
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
@@ -96,6 +101,7 @@ $(document).ready(function () {
         }else{
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
+            $('div.mainHeadQuad article').show();
             const singInIcon = $('<i class="fas fa-sign-in-alt"></i>');
             $('li.singIn').text("Zaloguj się ").append(singInIcon);
 
@@ -113,6 +119,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h1').hide();
             $('.mainHeadQuad h2').hide();
             $('li.singIn').hide();
+            $('div.mainHeadQuad article').hide();
             $('li.singOut').text('Powrót');
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
@@ -135,6 +142,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
             $('li.singIn').show();
+            $('div.mainHeadQuad article').show();
 
             $('li.singOut').text("Powrót");
 
@@ -147,4 +155,18 @@ $(document).ready(function () {
             mainHead = true;
         }
     }
+
+    $('button.pluse').click(function () { 
+        let countProduct = parseInt($(this).prev().attr('value'));
+        countProduct = countProduct + 1;
+        $(this).prev().attr('value', countProduct);
+    });
+    
+    $('button.minuse').click(function () { 
+        let countProduct = parseInt($(this).next().attr('value'));
+        if(countProduct){
+            countProduct = countProduct - 1;
+            $(this).next().attr('value', countProduct);
+        }
+    });
 });

@@ -84,6 +84,9 @@ ul{
         border-radius: 0 0 25px 0;
         padding: 5%;
     }
+    main div.mainHeadQuad:hover{
+        border-radius: 25px;
+    }
     main div.mainHeadQuad h1{
         font-size: 4em;
     }
