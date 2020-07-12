@@ -1,10 +1,13 @@
 <?php
+    include_once('products.php');
+    
     session_start();
 
     if (isset($_GET['logout'])) {
         session_destroy();
         header("Location: index.php");
     }
+    $siteNumber = 0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,30 +53,39 @@
                         echo "<h1>Witaj w sklepie</h1>";
                     }
                     echo "<h2>Mamy nadzieje, że spodobają Ci się nasze produkty</h2>";
-                    echo "<a href='?site='><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
+                    echo "<a href='?site=$siteNumber'><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
                 }else{
+                    if($countResults){
+                        for ($i=0; $i < $countResults; $i++) { 
+                            echo "<article>";
+                            echo "<img class='picture' src='assets/".$row[$i]['picture_product']."' />";
+                            echo "<div class='description'>";
+                            echo "<h2>".$row[$i]['name_product']."</h2>";
+                            echo "<table><tr><td>Kategoria: </td><td>".$row[$i]['category_product']."</td></tr>";
+                            echo "<tr><td>Rozmiar: </td><td>".$row[$i]['size_product']."</td></tr>";
+                            echo "<tr><td>Cena: </td><td>".$row[$i]['price_product']." zł</td></tr>";
+                            echo "</table>";
+                                if(isset($_SESSION['currentUserId'])){
+                                    echo "<div class='descriptionFooter'>";
+                                    echo "<button class='minuse'>-</button><input type='text' value='0' class='how'/><button class='pluse'>+</button><button class='addToBasket'>Dodaj</button>";
+                                    echo "</div>";
+                                    echo "</div>";
+                                    echo "</article>";
+                                }else{
+                                    echo "</div>";
+                                    echo "</article>";
+                                }
+                        }
+                        $getSide = $_GET['site'];
+                        echo "<a href='?site=".($getSide+1)."'>Następna Strona</a>";
 
-                    for ($i=0; $i < 3; $i++) { 
-                        echo "<article>";
-                        echo "<img class='picture' src='assets/spodnie.jpeg' />";
-                        echo "<div class='description'>";
-                        echo "<h2>Spodnie</h2>";
-                        echo "<table><tr><td>Kategoria: </td><td>Spodnie wyczynowe</td></tr>";
-                        echo "<tr><td>Rozmiar: </td><td>L</td></tr>";
-                        echo "<tr><td>Cena: </td><td>234,42 zł</td></tr>";
-                        echo "</table>";
-                            if(isset($_SESSION['currentUserId'])){
-                                echo "<div class='descriptionFooter'>";
-                                echo "<button class='minuse'>-</button><input type='text' value='0' class='how'/><button class='pluse'>+</button><button class='addToBasket'>Dodaj</button>";
-                                echo "</div>";
-                                echo "</div>";
-                                echo "</article>";
-                            }else{
-                                echo "</div>";
-                                echo "</article>";
-                            }
-                        
+                            
+                    
+                    }else{
+                        echo "<article><h2>Niestety aktualnie brak towaru</h2></article>";
                     }
+
+                    
                     
 
                 }
