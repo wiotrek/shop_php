@@ -3,10 +3,13 @@ $(document).ready(function () {
 
     $('li.singIn').click(function () { 
         if(mainHead){
+
             $('.mainHeadQuad h1').hide();
             $('.mainHeadQuad h2').hide();
             $('div.mainHeadQuad article').hide();
             $('li.singOut').hide();
+            $('a.buttonNext').hide();
+            
             $(this).text('Powrót');
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
@@ -41,6 +44,8 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').hide();
             $('div.mainHeadQuad article').hide();
             $('li.singIn').hide();
+            $('a.buttonNext').hide();
+
             $(this).text('Powrót');
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
@@ -84,6 +89,8 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').hide();
             $('li.singOut').hide();
             $('div.mainHeadQuad article').hide();
+            $('a.buttonNext').hide();
+
             $('li.singIn').text('Powrót');
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');
@@ -120,6 +127,8 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').hide();
             $('li.singIn').hide();
             $('div.mainHeadQuad article').hide();
+            $('a.buttonNext').hide();
+
             $('li.singOut').text('Powrót');
 
             $('.mainHeadQuad').append('<h1 class="singInH1">');

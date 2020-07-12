@@ -7,7 +7,7 @@
         session_destroy();
         header("Location: index.php");
     }
-    $siteNumber = 0;
+    $siteNumber = 1;
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,7 +56,17 @@
                     echo "<a href='?site=$siteNumber'><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
                 }else{
                     if($countResults){
-                        for ($i=0; $i < $countResults; $i++) { 
+                        $getSide = $_GET['site'];
+
+                        // Display products while amount products is smaller than $getSide * 5
+                        $firstLoopInt = ( $getSide * 5) - 5;
+                        if( ($getSide * 5) > $countResults){
+                            $secoundLoopInt = $countResults;
+                        }else{
+                            $secoundLoopInt = $getSide * 5;
+                        }
+
+                        for ($i=$firstLoopInt; $i < $secoundLoopInt; $i++) { 
                             echo "<article>";
                             echo "<img class='picture' src='assets/".$row[$i]['picture_product']."' />";
                             echo "<div class='description'>";
@@ -76,8 +86,7 @@
                                     echo "</article>";
                                 }
                         }
-                        $getSide = $_GET['site'];
-                        echo "<a href='?site=".($getSide+1)."'>Następna Strona</a>";
+                        echo "<a href='?site=".($getSide+1)."' class='buttonNext'>Następna Strona</a>";
 
                             
                     
