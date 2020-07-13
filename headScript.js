@@ -1,6 +1,8 @@
 $(document).ready(function () {
     let mainHead = true;
 
+    
+
     $('li.singIn').click(function () { 
         if(mainHead){
 
@@ -8,7 +10,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').hide();
             $('div.mainHeadQuad article').hide();
             $('li.singOut').hide();
-            $('a.buttonNext').hide();
+            $('div.mainFooter').hide();
             
             $(this).text('Powrót');
 
@@ -26,6 +28,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
             $('div.mainHeadQuad article').show();
+            $('div.mainFooter').show();
             const singInIcon = $('<i class="fas fa-sign-in-alt"></i>');
             $(this).text("Zaloguj się ").append(singInIcon);
 
@@ -44,7 +47,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').hide();
             $('div.mainHeadQuad article').hide();
             $('li.singIn').hide();
-            $('a.buttonNext').hide();
+            $('div.mainFooter').hide();
 
             $(this).text('Powrót');
 
@@ -67,6 +70,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').show();
             $('div.mainHeadQuad article').show();
             $('li.singIn').show();
+            $('div.mainFooter').show();
 
             $(this).text("Zarejestruj się");
 
@@ -89,7 +93,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').hide();
             $('li.singOut').hide();
             $('div.mainHeadQuad article').hide();
-            $('a.buttonNext').hide();
+            $('div.mainFooter').hide();
 
             $('li.singIn').text('Powrót');
 
@@ -109,6 +113,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h1').show();
             $('.mainHeadQuad h2').show();
             $('div.mainHeadQuad article').show();
+            $('div.mainFooter').show();
             const singInIcon = $('<i class="fas fa-sign-in-alt"></i>');
             $('li.singIn').text("Zaloguj się ").append(singInIcon);
 
@@ -127,7 +132,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').hide();
             $('li.singIn').hide();
             $('div.mainHeadQuad article').hide();
-            $('a.buttonNext').hide();
+            $('div.mainFooter').hide();
 
             $('li.singOut').text('Powrót');
 
@@ -152,6 +157,7 @@ $(document).ready(function () {
             $('.mainHeadQuad h2').show();
             $('li.singIn').show();
             $('div.mainHeadQuad article').show();
+            $('div.mainFooter').show();
 
             $('li.singOut').text("Powrót");
 
@@ -165,17 +171,38 @@ $(document).ready(function () {
         }
     }
 
-    $('button.pluse').click(function () { 
+    $('button.pluse').click(function (e) { 
+        e.preventDefault();
         let countProduct = parseInt($(this).prev().attr('value'));
         countProduct = countProduct + 1;
         $(this).prev().attr('value', countProduct);
+        
     });
     
-    $('button.minuse').click(function () { 
+    $('button.minuse').click(function (e) { 
+        e.preventDefault();
         let countProduct = parseInt($(this).next().attr('value'));
         if(countProduct){
             countProduct = countProduct - 1;
             $(this).next().attr('value', countProduct);
+            $('button.addToBasket').attr('disabled', false);
         }
     });
+    
+    $('button.addToBasket').click(function (e) {
+        const descriptionFooter = $(this).parent();
+        if(descriptionFooter.find('input').attr('value') == 0)
+            e.preventDefault();
+    });
+
+    //     let amountOfProduct = descriptionFooter.find('input').attr('value');
+    // $('.addToBasket').click(function (e) { 
+    //     e.preventDefault();
+    //     const descriptionFooter = $(this).parent();
+    //     let amountOfProduct = descriptionFooter.find('input').attr('value');
+    //     let numberIdProduct = $(this).attr('value');
+    //     newOrderToBasket = new createBasket(numberIdProduct, amountOfProduct);
+    // });
 });
+
+

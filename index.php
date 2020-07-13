@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="theme.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
     <script src="headScript.js"></script>
+
 </head>
 
 <body>
@@ -62,11 +63,16 @@
                         $firstLoopInt = ( $getSide * 5) - 5;
                         if( ($getSide * 5) > $countResults){
                             $secoundLoopInt = $countResults;
+                            $lastSide = true;
                         }else{
                             $secoundLoopInt = $getSide * 5;
+                            $lastSide = false;
                         }
 
                         for ($i=$firstLoopInt; $i < $secoundLoopInt; $i++) { 
+                            echo "<form action='order.php' method='post'>";
+                            echo "<input type='hidden' name='get_id_product' value='".$row[$i]['id']."'/>";
+                            echo "<input type='hidden' name='get_current_site' value='$getSide'/>";
                             echo "<article>";
                             echo "<img class='picture' src='assets/".$row[$i]['picture_product']."' />";
                             echo "<div class='description'>";
@@ -77,7 +83,8 @@
                             echo "</table>";
                                 if(isset($_SESSION['currentUserId'])){
                                     echo "<div class='descriptionFooter'>";
-                                    echo "<button class='minuse'>-</button><input type='text' value='0' class='how'/><button class='pluse'>+</button><button class='addToBasket'>Dodaj</button>";
+                                    echo "<button class='minuse'>-</button><input type='text' value='0' name='get_amount_product'/><button class='pluse'>+</button>";
+                                    echo "<button class='addToBasket'>Dodaj</button>";
                                     echo "</div>";
                                     echo "</div>";
                                     echo "</article>";
@@ -85,9 +92,14 @@
                                     echo "</div>";
                                     echo "</article>";
                                 }
+                            echo "</form>";
                         }
-                        echo "<a href='?site=".($getSide+1)."' class='buttonNext'>Następna Strona</a>";
-
+                        echo "<div class ='mainFooter'>";
+                        if($getSide > 1)
+                            echo "<a href='?site=".($getSide-1)."' class='buttonMainFooter'>Poprzednia</a>";
+                        if(!$lastSide)
+                            echo "<a href='?site=".($getSide+1)."' class='buttonMainFooter'>Następna</a>";
+                        echo "</div>";
                             
                     
                     }else{
