@@ -69,6 +69,9 @@ ul{
         menu li a{
             color:inherit;
         }
+        menu i{
+            width: 100%;
+        }
 
     /* section main */
         main{

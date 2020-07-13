@@ -32,7 +32,10 @@
         <ul>
             <?php
                 if(isset($_SESSION['currentUserId'])){
-                    echo "<li><i class='fas fa-shopping-basket'></i></li>";
+                    if(isset($_GET['basket']))
+                        echo "<li><a href='index.php'>Powrót</a></li>";
+                    else
+                        echo "<li><a href='?basket'><i class='fas fa-shopping-basket'></i></a></li>";
                     echo "<li><a href='?logout'>Wyloguj sie</a></li>";
                 }else{
                     echo "<li class='singIn'>Zaloguj się <i class='fas fa-sign-in-alt'></i></li>";
@@ -46,15 +49,20 @@
             <?php
                 if(!isset($_GET['site']) ){
 
-                    // HOME SITE
-                    if(isset($_SESSION['currentUserId'])){
-                        $currentUserName = $_SESSION['currentUserName'];
-                        echo "<h1>Witaj, $currentUserName</h1>";
+                    if(isset($_GET['basket'])){
+                        
                     }else{
-                        echo "<h1>Witaj w sklepie</h1>";
+                        // HOME SITE
+                        if(isset($_SESSION['currentUserId'])){
+                            $currentUserName = $_SESSION['currentUserName'];
+                            echo "<h1>Witaj, $currentUserName</h1>";
+                        }else{
+                            echo "<h1>Witaj w sklepie</h1>";
+                        }
+                        echo "<h2>Mamy nadzieje, że spodobają Ci się nasze produkty</h2>";
+                        echo "<a href='?site=$siteNumber'><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
                     }
-                    echo "<h2>Mamy nadzieje, że spodobają Ci się nasze produkty</h2>";
-                    echo "<a href='?site=$siteNumber'><h2 class='mainLookProducts'>Zobacz nasze produkty</h2></a>";
+                    
                 }else{
                     if($countResults){
                         $getSide = $_GET['site'];
