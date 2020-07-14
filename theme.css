@@ -277,6 +277,24 @@ ul{
             border-radius: 15px;
             border: 2px solid var(--bg-color);
         }
+        button.sendOrder{
+            width: 30%;
+            margin: 2% 35% 0 35%;
+            padding: 1% 0;
+            border: 2px solid var(--main-txt-color);
+            color: var(--main-txt-color);
+            border-radius: 15px;
+            background-color: var(--main-color);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        button.sendOrder:hover{
+            border: 2px solid var(--main-color);
+            animation-name: firstAnimation;
+            animation-duration: 1s; 
+            background-color:white;
+            color:var(--main-color);
+        }
 }
 @media(min-width: 1400px){
     /* section menu */

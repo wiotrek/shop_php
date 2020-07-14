@@ -51,10 +51,11 @@
                     if(isset($_GET['basket'])){
                         if($countResultsOrders){
                             $currentUserName = $_SESSION['currentUserName'];
-                            echo "<h2>$currentUserName, Twój koszyk:</h2>";
-                            echo "<table class='basket'>";
-                            for ($i=0; $i < $countResultsOrders; $i++) { 
+                            echo "<h2 style='font-size:2em;'>$currentUserName, Twój koszyk:</h2>";
 
+                            echo "<table class='basket'>";
+                            $sumPrice = 0;
+                            for ($i=0; $i < $countResultsOrders; $i++) { 
                                 // here we set id for new rows
                                 for($j=0; $j < $countResults; $j++){
                                     if($row[$j]['id'] == $whichGetIdProduct[$i])
@@ -68,9 +69,11 @@
                                 echo "<td>$toSalary zł</td>";
                                 
                                 echo "</tr>";
+                                $sumPrice = $sumPrice + $toSalary;
                             }
                             echo "</table>";
-                            // var_dump($whichGetIdProduct);
+                            echo "<h2>Razem do zapłaty, $sumPrice zł</h2>";
+                            echo "<button class='sendOrder'>Złóż zamówienie</button>";
                         }else{
                             echo "<h2>Niestety, nie dodałeś żadnego produktu</h2>";
                         }
