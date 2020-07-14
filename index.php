@@ -31,7 +31,7 @@
             <?php
                 if(isset($_SESSION['currentUserId'])){
                     if(isset($_GET['basket']))
-                        echo "<li><a href='index.php'>Powrót</a></li>";
+                        echo "<li><a href='index.php' class='widtherA'>Powrót</a></li>";
                     else
                         echo "<li><a href='?basket'><i class='fas fa-shopping-basket'></i></a></li>";
                     echo "<li><a href='?logout'>Wyloguj sie</a></li>";
@@ -46,21 +46,38 @@
         <div class='mainHeadQuad'>
             <?php
                 if(!isset($_GET['site']) ){
-                    $currentUserName = $_SESSION['currentUserName'];
+                    
 
                     if(isset($_GET['basket'])){
                         if($countResultsOrders){
-                            echo "<h2><b style='color:red'>$currentUserName</b>, Twój koszyk:</h2>";
+                            $currentUserName = $_SESSION['currentUserName'];
+                            echo "<h2>$currentUserName, Twój koszyk:</h2>";
+                            echo "<table class='basket'>";
                             for ($i=0; $i < $countResultsOrders; $i++) { 
-                                echo $row_orders[$i]['id'];
+
+                                // here we set id for new rows
+                                for($j=0; $j < $countResults; $j++){
+                                    if($row[$j]['id'] == $whichGetIdProduct[$i])
+                                        $numberIdInRows = $j;
+                                }
+                                echo "<tr><td>".($i+1).".</td><td style='text-algin:left;'>".$row[$numberIdInRows]['name_product']."</td>";
+                                echo "<td>".$row[$numberIdInRows]['size_product']."</td>";
+                                echo "<td>".$howGetAmountProduct[$i]." szt</td>";
+                                
+                                $toSalary = $howGetAmountProduct[$i] * $row[$numberIdInRows]['price_product'];
+                                echo "<td>$toSalary zł</td>";
+                                
+                                echo "</tr>";
                             }
+                            echo "</table>";
+                            // var_dump($whichGetIdProduct);
                         }else{
                             echo "<h2>Niestety, nie dodałeś żadnego produktu</h2>";
                         }
                     }else{
                         // HOME SITE
                         if(isset($_SESSION['currentUserId'])){
-                            
+                            $currentUserName = $_SESSION['currentUserName'];
                             echo "<h1>Witaj, $currentUserName</h1>";
                         }else{
                             echo "<h1>Witaj w sklepie</h1>";
@@ -94,6 +111,8 @@
                             echo "<table><tr><td>Kategoria: </td><td>".$row[$i]['category_product']."</td></tr>";
                             echo "<tr><td>Rozmiar: </td><td>".$row[$i]['size_product']."</td></tr>";
                             echo "<tr><td>Cena: </td><td>".$row[$i]['price_product']." zł</td></tr>";
+                            echo "<tr><td>Ilość: </td><td>".$row[$i]['amount_product']." szt</td></tr>";
+
                             echo "</table>";
                                 if(isset($_SESSION['currentUserId'])){
                                     echo "<div class='descriptionFooter'>";

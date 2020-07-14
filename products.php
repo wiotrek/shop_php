@@ -18,22 +18,26 @@
         $stmt->closeCursor();
 
 
-        // // query for basket
-        // $userIdInProducts = $_SESSION['currentUserId'];
-        // $stmt_orders = $dbh->prepare(
-        //     "SELECT * FROM basketTmp WHERE id_customer=$userIdInProducts"
-        // );
-        // $stmt_orders->setFetchMode(PDO::FETCH_ASSOC);
-        // $stmt_orders->execute();
+        // query for basket
+        $userIdInProducts = $_SESSION['currentUserId'];
+        $stmt_orders = $dbh->prepare(
+            "SELECT * FROM basketTmp WHERE id_customer=$userIdInProducts"
+        );
+        $stmt_orders->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt_orders->execute();
         
-        // $countResultsOrders = $stmt_orders->rowCount();
-        // $row_orders = $stmt_orders->fetchAll();
-
-        // for ($i=0; $i <  $countResultsOrders; $i++) { 
-        //      echo $row_orders[$i]['id'];
-        // }
-
-        // $stmt_orders->closeCursor();
+        $countResultsOrders = $stmt_orders->rowCount();
+        $row_orders = $stmt_orders->fetchAll();
+        
+        $whichGetIdProduct = array();
+        for ($i=0; $i < $countResultsOrders; $i++) { 
+            array_push($whichGetIdProduct, intval($row_orders[$i]['id_product']));
+        }
+        $howGetAmountProduct = array();
+        for ($i=0; $i < $countResultsOrders; $i++) { 
+            array_push($howGetAmountProduct, $row_orders[$i]['amount_product']);
+        }
+        $stmt_orders->closeCursor();
 
         $dbh = null;
 

@@ -7,6 +7,7 @@
         $orderGetIdProduct = $_POST['get_id_product'];
         $orderGetAmountProduct = $_POST['get_amount_product'];
         $orderGetCurrentSite = $_POST['get_current_site'];
+
         $currentUser = $_SESSION['currentUserId'];
 
         $options = array(
@@ -18,7 +19,8 @@
         
         $stmt = $dbh->prepare(
             "SELECT amount_product FROM products WHERE id=$orderGetIdProduct;
-            INSERT INTO basketTmp (id_customer, id_product, amount_product)  VALUES (:currentUser, :orderGetIdProduct, :orderGetAmountProduct);"
+            INSERT INTO basketTmp (id_customer, id_product, amount_product)  
+            VALUES (:currentUser, :orderGetIdProduct, :orderGetAmountProduct);"
         );
 
             // first statement
@@ -43,6 +45,7 @@
         $stmt->bindValue(":orderGetIdProduct", $orderGetIdProduct, PDO::PARAM_INT);
         $stmt->bindValue(":orderGetAmountProduct", $orderGetAmountProduct, PDO::PARAM_INT);
 
+
         $stmt->execute();
         $stmt->closeCursor();
 
@@ -50,11 +53,12 @@
         $stmt = $dbh->prepare("UPDATE products SET amount_product=$newCurrentAmount WHERE id=$orderGetIdProduct;");
         $stmt->execute();
         $stmt->closeCursor();
-
+        
 
 
         $dbh = null;
 
+        header("Location: index.php?site=$orderGetCurrentSite");
     }catch(PDOException $e){
         echo "Error: ". $e->getMessage();
     }

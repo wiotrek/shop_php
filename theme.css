@@ -68,6 +68,8 @@ ul{
         }
         menu li a{
             color:inherit;
+            width: 100%;
+            display: block;
         }
         menu i.fas.fa-shopping-basket{
             width: 100%;
@@ -261,6 +263,19 @@ ul{
         table td.singInTableError{
             text-align: center;
             color: red;
+        }
+    /* section basket */
+        table.basket{
+            margin: 3% 5%;
+            padding: 2%;
+            width: 80%;
+            text-align: center;
+            font-size: 1.5em;
+            border: 2px solid var(--main-txt-color);
+        }
+        table.basket:hover{
+            border-radius: 15px;
+            border: 2px solid var(--bg-color);
         }
 }
 @media(min-width: 1400px){
