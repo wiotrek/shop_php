@@ -1,6 +1,5 @@
 $(document).ready(function () {
     let mainHead = true;
-
     
 
     $('li.singIn').click(function () { 

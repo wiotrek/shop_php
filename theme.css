@@ -69,7 +69,7 @@ ul{
         menu li a{
             color:inherit;
         }
-        menu i{
+        menu i.fas.fa-shopping-basket{
             width: 100%;
         }
 

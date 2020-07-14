@@ -1,7 +1,5 @@
 <?php
     include_once('products.php');
-    
-    session_start();
 
     if (isset($_GET['logout'])) {
         session_destroy();
@@ -48,13 +46,21 @@
         <div class='mainHeadQuad'>
             <?php
                 if(!isset($_GET['site']) ){
+                    $currentUserName = $_SESSION['currentUserName'];
 
                     if(isset($_GET['basket'])){
-                        
+                        if($countResultsOrders){
+                            echo "<h2><b style='color:red'>$currentUserName</b>, Twój koszyk:</h2>";
+                            for ($i=0; $i < $countResultsOrders; $i++) { 
+                                echo $row_orders[$i]['id'];
+                            }
+                        }else{
+                            echo "<h2>Niestety, nie dodałeś żadnego produktu</h2>";
+                        }
                     }else{
                         // HOME SITE
                         if(isset($_SESSION['currentUserId'])){
-                            $currentUserName = $_SESSION['currentUserName'];
+                            
                             echo "<h1>Witaj, $currentUserName</h1>";
                         }else{
                             echo "<h1>Witaj w sklepie</h1>";
@@ -78,7 +84,7 @@
                         }
 
                         for ($i=$firstLoopInt; $i < $secoundLoopInt; $i++) { 
-                            echo "<form action='order.php' method='post'>";
+                            echo "<form action='basketTmp.php' method='post'>";
                             echo "<input type='hidden' name='get_id_product' value='".$row[$i]['id']."'/>";
                             echo "<input type='hidden' name='get_current_site' value='$getSide'/>";
                             echo "<article>";
